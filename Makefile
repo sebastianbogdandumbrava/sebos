@@ -13,3 +13,7 @@ LDFLAGS += -m $(shell $(LD) -V | grep elf_i386 2>/dev/null | head -n 1)
 all:
 	gcc -fno-pic -nostdinc -static -m32  main.c -c main.o
 	gcc -fno-pic -nostdinc asm.c -c x86.o
+
+clean:
+	rm main.o
+	rm asm.o
