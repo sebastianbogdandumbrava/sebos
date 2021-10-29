@@ -1,3 +1,8 @@
+OBJS = \
+	main.o \
+	asm.o \
+	kernel.o \
+
 CC = $(TOOLPREFIX)gcc
 AS = $(TOOLPREFIX)gas
 LD = $(TOOLPREFIX)ld
@@ -11,8 +16,8 @@ LDFLAGS += -m $(shell $(LD) -V | grep elf_i386 2>/dev/null | head -n 1)
 
 
 all:
-	gcc -fno-pic -nostdinc -static -m32  main.c -c main.o
-	gcc -fno-pic -nostdinc asm.c -c x86.o
+	$(CC) $(CFLAGS) main.c -c main.o
+	$(CC) $(CFLAGS) asm.c -c asm.o
 
 clean:
 	rm main.o
