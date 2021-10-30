@@ -26,3 +26,12 @@ static void setup_gdt(void)
 
 	return;
 }
+
+
+
+static void setup_idt(void)
+{
+	static const struct gdt_ptr null_idt = {0, 0};
+	asm volatile("lidtl %0" : : "m" (null_idt));
+}
+
